@@ -92,10 +92,10 @@
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.alipay</groupId>-->
-<!--            <artifactId>obdriver</artifactId>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.alipay</groupId>
+            <artifactId>obdriver</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
