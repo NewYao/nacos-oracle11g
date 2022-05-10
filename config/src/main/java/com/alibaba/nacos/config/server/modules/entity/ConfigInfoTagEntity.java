@@ -18,12 +18,7 @@ package com.alibaba.nacos.config.server.modules.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -38,44 +33,54 @@ import static com.alibaba.nacos.config.server.constant.Constants.CONFIG_INFO_TAG
 @Entity
 @Data
 public class ConfigInfoTagEntity implements Serializable {
-    
+
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(
+        name = "id"
+    )
+    @SequenceGenerator(
+        name = "SEQ_CONFIG_INFO_TAG",
+        sequenceName = "SEQ_CONFIG_INFO_TAG",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "SEQ_CONFIG_INFO_TAG"
+    )
     private Long id;
-    
+
     @Column(name = "data_id")
     private String dataId;
-    
+
     @Column(name = "group_id")
     private String groupId;
-    
+
     @Column(name = "tenant_id")
     private String tenantId;
-    
+
     @Column(name = "tag_id")
     private String tagId;
-    
+
     @Column(name = "app_name")
     private String appName;
-    
+
     @Column(name = "content")
     private String content;
-    
+
     @Column(name = "md5")
     private String md5;
-    
+
     @Column(name = "gmt_create")
     private Date gmtCreate;
-    
+
     @Column(name = "gmt_modified")
     private Date gmtModified;
-    
+
     @Column(name = "src_user")
     private String srcUser;
-    
+
     @Column(name = "src_ip")
     private String srcIp;
-    
-    
+
+
 }

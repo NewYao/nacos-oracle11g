@@ -18,12 +18,7 @@ package com.alibaba.nacos.config.server.modules.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 import static com.alibaba.nacos.config.server.constant.Constants.CONFIG_TAGS_RELATION_TABLE_NAME;
@@ -37,29 +32,39 @@ import static com.alibaba.nacos.config.server.constant.Constants.CONFIG_TAGS_REL
 @Entity
 @Data
 public class ConfigTagsRelationEntity implements Serializable {
-    
+
     @Id
-    @Column(name = "nid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(
+        name = "nid"
+    )
+    @SequenceGenerator(
+        name = "SEQ_CONFIG_TAGS_RELATION",
+        sequenceName = "SEQ_CONFIG_TAGS_RELATION",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "SEQ_CONFIG_TAGS_RELATION"
+    )
     private Long nid;
-    
+
     @Column(name = "id")
     private Long id;
-    
+
     @Column(name = "tag_name")
     private String tagName;
-    
+
     @Column(name = "tag_type")
     private String tagType;
-    
+
     @Column(name = "data_id")
     private String dataId;
-    
+
     @Column(name = "group_id")
     private String groupId;
-    
+
     @Column(name = "tenant_id")
     private String tenantId;
-    
-    
+
+
 }

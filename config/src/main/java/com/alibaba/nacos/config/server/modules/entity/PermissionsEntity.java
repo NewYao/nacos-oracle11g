@@ -39,25 +39,25 @@ import static com.alibaba.nacos.config.server.constant.Constants.PERMISSIONS_TAB
 @Entity
 @Data
 public class PermissionsEntity implements Serializable {
-    
-    
+
+
     /**
      * role.
      */
     @Id
     @Column(name = "role")
     private String role;
-    
+
     /**
      * resource.
      */
-    @Column(name = "resource")
+    @Column(name = "resources")
     private String resource;
-    
+
     /**
      * action.
      */
     @Column(name = "action")
     private String action;
-    
+
 }

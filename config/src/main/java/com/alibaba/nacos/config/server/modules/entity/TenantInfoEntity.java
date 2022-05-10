@@ -18,12 +18,7 @@ package com.alibaba.nacos.config.server.modules.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 import static com.alibaba.nacos.config.server.constant.Constants.TENANT_INFO_TABLE_NAME;
@@ -37,31 +32,41 @@ import static com.alibaba.nacos.config.server.constant.Constants.TENANT_INFO_TAB
 @Entity
 @Data
 public class TenantInfoEntity implements Serializable {
-    
+
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(
+        name = "id"
+    )
+    @SequenceGenerator(
+        name = "SEQ_TENANT_INFO",
+        sequenceName = "SEQ_TENANT_INFO",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "SEQ_TENANT_INFO"
+    )
     private Long id;
-    
+
     @Column(name = "kp")
     private String kp;
-    
+
     @Column(name = "tenant_id")
     private String tenantId;
-    
+
     @Column(name = "tenant_name")
     private String tenantName;
-    
+
     @Column(name = "tenant_desc")
     private String tenantDesc;
-    
+
     @Column(name = "create_source")
     private String createSource;
-    
+
     @Column(name = "gmt_create")
     private Long gmtCreate;
-    
+
     @Column(name = "gmt_modified")
     private Long gmtModified;
-    
+
 }
