@@ -30,13 +30,13 @@ import java.util.List;
  */
 public interface ConfigInfoAggrRepository
         extends PagingAndSortingRepository<ConfigInfoAggrEntity, Long>, QuerydslPredicateExecutor<ConfigInfoAggrEntity> {
-
+    
     /**
      * findAllAggrGroup.
      *
      * @return
      */
-    @Query(value = "SELECT  data_id,group_id,tenant_id,id,app_name,content,gmt_modified,datum_id FROM config_info_aggr", nativeQuery = true)
+    @Query(value = "SELECT DISTINCT data_id,group_id,tenant_id,id,app_name,content,gmt_modified,datum_id FROM config_info_aggr", nativeQuery = true)
     List<ConfigInfoAggrEntity> findAllAggrGroup();
-
+    
 }
